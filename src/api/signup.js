@@ -5,7 +5,7 @@ export const signUp = async data => {
     let baseURL =
       window.location.hostname === "localhost"
         ? "http://localhost:8081"
-        : "https://quiltersara.netlify.app"
+        : "https://quilt-api-hdi7d.ondigitalocean.app"
     // post data to a url endpoint
     const response = await axios.post(`${baseURL}/auth/register`, data)
     // console.log(response)
