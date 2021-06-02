@@ -7,6 +7,8 @@ const { Provider, Consumer } = React.createContext()
 class PatternProvider extends Component {
   state = {
     test: "ourTextExample",
+    patterns: "",
+    loading: true,
   }
 
   componentDidMount() {
@@ -23,16 +25,19 @@ class PatternProvider extends Component {
   getAllPatterns = async () => {
     const allPatterns = await getAllPatterns()
     console.log(allPatterns)
-    // if (currentZip) {
-    //   this.setState({ patterns: allPatterns })
-    // }
-    // this.setState({ loading: false })
+    if (allPatterns) {
+      this.setState({ patterns: allPatterns })
+    }
+    this.setState({ loading: false })
+    console.log(this.state)
   }
   render() {
     return (
       <Provider
         value={{
           test: this.state.test,
+          patterns: this.state.patterns,
+          loading: this.state.loading,
         }}
       >
         {this.props.children}
