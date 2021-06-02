@@ -1,12 +1,15 @@
 import React from "react"
-import SignUp from "../components/signUp"
 import PatternForm from "../components/patternForm"
+import ListPatterns from "../components/listPatterns"
+import { PatternProvider } from "../contexts/patternContext"
 
 export default function Home() {
   return (
-    <div>
-      <SignUp />
-      <PatternForm />
-    </div>
+    <PatternProvider>
+      <div>
+        <PatternForm />
+        <ListPatterns />
+      </div>
+    </PatternProvider>
   )
 }
