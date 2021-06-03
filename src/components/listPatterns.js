@@ -1,11 +1,12 @@
 import React from "react"
+import { Box, Text } from "@chakra-ui/react"
 import { PatternConsumer } from "../contexts/patternContext"
 
 const ListPatterns = () => {
   return (
     <PatternConsumer>
       {({ test, loading, patterns }) => (
-        <div>
+        <Box p={8} border="1px" borderColor="gray.200">
           <div>{test}</div>
           <div>new test</div>
           <div>{loading}</div>
@@ -22,7 +23,7 @@ const ListPatterns = () => {
               ))}
             </div>
           )}
-        </div>
+        </Box>
       )}
     </PatternConsumer>
   )
