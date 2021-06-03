@@ -26,15 +26,21 @@ const ContactForm = () => {
   function validate(values) {
     const errors = {}
     if (!values.name) {
-      errors.name = "Required"
+      errors.name = "A Name is required"
+    }
+
+    if (values.imageURL) {
+      var correctImageURL = values.imageURL.startsWith(
+        "https://lh3.googleusercontent.com/"
+      )
+      if (!correctImageURL) {
+        errors.imageURL = "Please, use the correct image URL"
+      }
     }
 
     if (!values.imageURL) {
-      errors.imageURL = "Required"
+      errors.imageURL = "An image URL Required"
     }
-    // if (!values.category) {
-    //   errors.category = "Required"
-    // }
     return errors
   }
 
