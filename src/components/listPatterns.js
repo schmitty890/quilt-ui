@@ -40,7 +40,11 @@ const ListPatterns = () => {
                   <Box p="6">
                     {viewMoreData ? (
                       <Box d="flex" alignItems="baseline">
-                        <Badge px="2" colorScheme="teal">
+                        <Badge
+                          px="2"
+                          colorScheme={pattern.colorScheme}
+                          variant={pattern.variant}
+                        >
                           {pattern.category}
                         </Badge>
                       </Box>

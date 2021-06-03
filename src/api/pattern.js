@@ -45,9 +45,29 @@ export const getAllPatterns = async () => {
         : "https://quilt-api-hdi7d.ondigitalocean.app"
     // post data to a url endpoint
     const response = await axios.get(`${baseURL}/pattern`)
-    console.log(response)
+    // console.log(response)
+    response.data.forEach(pattern => {
+      // console.log(pattern)
+      assignColors(pattern)
+    })
+
     return response.data
   } catch (error) {
     console.log(error) // catches both errors
   }
+}
+
+/**
+ *
+ * @param {*} pattern
+ * @returns colorScheme and varient for badge colors
+ */
+const assignColors = pattern => {
+  categoryTypeIdData.filter(eventType => {
+    if (eventType.eventTypeId === pattern.category) {
+      pattern.colorScheme = eventType.colorScheme
+      pattern.variant = eventType.variant
+    }
+  })
+  return pattern
 }
