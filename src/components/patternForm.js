@@ -30,10 +30,10 @@ const ContactForm = () => {
     }
 
     if (values.imageURL) {
-      var correctImageURL = values.imageURL.startsWith(
-        "https://lh3.googleusercontent.com/"
-      )
-      if (!correctImageURL) {
+      var correctImageURL = values.imageURL.startsWith("https://i.imgur.com/")
+      var endCorrectImageURL = values.imageURL.endsWith(".png")
+
+      if (!correctImageURL || !endCorrectImageURL) {
         errors.imageURL = "Please, use the correct image URL"
       }
     }

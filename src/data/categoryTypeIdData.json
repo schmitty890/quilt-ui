@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "eventTypeId": "texture",
+    "colorScheme": "red",
+    "variant": "solid"
+  },
+  {
+    "id": 2,
+    "eventTypeId": "curls/swirls",
+    "colorScheme": "blue",
+    "variant": "outline"
+  },
+  {
+    "id": 3,
+    "eventTypeId": "feathers",
+    "colorScheme": "green",
+    "variant": "solid"
+  },
+  {
+    "id": 4,
+    "eventTypeId": "floral/leaves",
+    "colorScheme": "green",
+    "variant": "solid"
+  },
+  {
+    "id": 5,
+    "eventTypeId": "stars",
+    "colorScheme": "green",
+    "variant": "outline"
+  },
+  {
+    "id": 6,
+    "eventTypeId": "juvenile",
+    "colorScheme": "green",
+    "variant": "solid"
+  },
+  {
+    "id": 7,
+    "eventTypeId": "seasonal",
+    "colorScheme": "green",
+    "variant": "outline"
+  }
+]

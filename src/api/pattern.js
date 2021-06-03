@@ -1,4 +1,6 @@
 import axios from "axios"
+import categoryTypeIdData from "../data/categoryTypeIdData.json"
+
 export const addPattern = async data => {
   // console.log(data)
   try {
