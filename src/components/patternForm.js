@@ -14,6 +14,9 @@ import {
   Alert,
   AlertIcon,
   useToast,
+  RadioGroup,
+  Radio,
+  Stack,
 } from "@chakra-ui/react"
 
 const ContactForm = () => {
@@ -29,9 +32,9 @@ const ContactForm = () => {
     if (!values.imageURL) {
       errors.imageURL = "Required"
     }
-    if (!values.category) {
-      errors.category = "Required"
-    }
+    // if (!values.category) {
+    //   errors.category = "Required"
+    // }
     return errors
   }
 
@@ -49,32 +52,40 @@ const ContactForm = () => {
       category: "",
     },
     validate,
-    onSubmit: values => {
+    onSubmit: async values => {
       setIsLoading(true)
       // make post request here
-      console.log(values)
-      addPattern(values) // post route
-      setIsLoading(false)
-      toast({
-        title: "Email sent!",
-        description: "I'll get back to you asap",
-        status: "success",
-        duration: 5000,
-        isClosable: true,
-      })
-
-      document.getElementById("name").value = ""
-      document.getElementById("imageURL").value = ""
-      document.getElementById("category").value = ""
-      // setMsgSent(true)
-      // setTimeout(() => {
-      //   setMsgSent(false)
-      // }, 5000)
-      // values = {"name":"ramen","imageURL":"mountains"}
+      // console.log(values)
+      values.category = value
+      // console.log(values)
+      const addThatPattern = await addPattern(values) // post route
+      if (addThatPattern.status === 200) {
+        setIsLoading(false)
+        toast({
+          title: "Pattern saved!",
+          description: "Another successful save :)",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+        })
+        document.getElementById("name").value = ""
+        document.getElementById("imageURL").value = ""
+      }
     },
   })
   const toast = useToast()
-
+  const [value, setValue] = React.useState("1")
+  // TODO: change these vals to the categories needed
+  const vals = [
+    "First option",
+    "Second option",
+    "Third option",
+    "Fourth option",
+    "Fifth option",
+    "Sixth option",
+    "Seventh option",
+    "Eight option",
+  ]
   return (
     <Grid templateColumns="repeat(12, 1fr)" gap={0.5}>
       <GridItem rowSpan={1} colSpan={{ base: 12 }} bg={{ base: "white" }} p={4}>
@@ -112,7 +123,7 @@ const ContactForm = () => {
             ) : null}
           </FormControl>
 
-          <FormControl isRequired>
+          {/* <FormControl isRequired>
             <FormLabel mt={4} htmlFor="category">
               Category:
             </FormLabel>
@@ -127,7 +138,24 @@ const ContactForm = () => {
             {touched.category && errors.category ? (
               <Text color="red.500">{errors.category}</Text>
             ) : null}
-          </FormControl>
+          </FormControl> */}
+
+          <RadioGroup
+            onChange={setValue}
+            value={value}
+            id="category"
+            name="category"
+          >
+            <Stack spacing={5} direction="column">
+              {vals.map(val => {
+                return (
+                  <Radio isRequired colorScheme="teal" key={val} value={val}>
+                    {val}
+                  </Radio>
+                )
+              })}
+            </Stack>
+          </RadioGroup>
 
           <Button
             mt={4}

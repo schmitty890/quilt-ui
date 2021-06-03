@@ -32,14 +32,14 @@ export default function Home() {
                 <FormLabel mb="0">Show more data?</FormLabel>
                 <Switch
                   size="lg"
-                  colorScheme="red"
+                  colorScheme="teal"
                   name="canEdit"
                   onChange={toggleMoreData}
                   defaultChecked
                 />
               </FormControl>
             </Box>
-            <Box p={8} border="1px" borderColor="gray.200">
+            <Box>
               {/* <PatternForm /> */}
               <ListPatterns />
             </Box>

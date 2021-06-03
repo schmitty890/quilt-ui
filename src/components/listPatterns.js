@@ -1,5 +1,14 @@
 import React from "react"
-import { Box, Text, Switch, FormControl, FormLabel } from "@chakra-ui/react"
+import {
+  Box,
+  Text,
+  Switch,
+  FormControl,
+  FormLabel,
+  Grid,
+  Image,
+  Badge,
+} from "@chakra-ui/react"
 import { PatternConsumer } from "../contexts/patternContext"
 
 const ListPatterns = () => {
@@ -10,20 +19,48 @@ const ListPatterns = () => {
           {loading ? (
             <div>loading</div>
           ) : (
-            <div>
+            <Grid
+              templateColumns={{
+                base: "repeat(1, 1fr)",
+                md: "repeat(2, 1fr)",
+                lg: "repeat(5, 1fr)",
+              }}
+              gap={4}
+            >
               {patterns.map(pattern => (
-                <div key={pattern._id} style={{ border: "3px solid black" }}>
-                  {viewMoreData ? (
-                    <Box>
-                      <h1>Name: {pattern.name}</h1>
-                      <div>Category: {pattern.category}</div>
-                    </Box>
-                  ) : null}
+                <Box
+                  key={pattern._id}
+                  maxW="sm"
+                  borderWidth="1px"
+                  borderRadius="lg"
+                  overflow="hidden"
+                >
+                  <Image src={pattern.imageURL} alt="test alt" />
 
-                  <img src={pattern.imageURL} style={{ height: "200px" }} />
-                </div>
+                  <Box p="6">
+                    {viewMoreData ? (
+                      <Box d="flex" alignItems="baseline">
+                        <Badge px="2" colorScheme="teal">
+                          {pattern.category}
+                        </Badge>
+                      </Box>
+                    ) : null}
+
+                    {viewMoreData ? (
+                      <Box
+                        mt="1"
+                        fontWeight="semibold"
+                        as="h4"
+                        lineHeight="tight"
+                        isTruncated
+                      >
+                        {pattern.name}
+                      </Box>
+                    ) : null}
+                  </Box>
+                </Box>
               ))}
-            </div>
+            </Grid>
           )}
         </Box>
       )}
