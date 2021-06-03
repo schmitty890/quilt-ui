@@ -83,14 +83,13 @@ const ContactForm = () => {
   const [value, setValue] = React.useState("1")
   // TODO: change these vals to the categories needed
   const vals = [
-    "First option",
-    "Second option",
-    "Third option",
-    "Fourth option",
-    "Fifth option",
-    "Sixth option",
-    "Seventh option",
-    "Eight option",
+    "texture",
+    "curls/swirls",
+    "feathers",
+    "floral/leaves",
+    "stars",
+    "juvenile",
+    "seasonal",
   ]
   return (
     <Grid templateColumns="repeat(12, 1fr)" gap={0.5}>
