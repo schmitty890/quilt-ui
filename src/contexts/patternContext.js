@@ -9,6 +9,7 @@ class PatternProvider extends Component {
     test: "ourTextExample",
     patterns: "",
     loading: true,
+    viewMoreData: true,
   }
 
   componentDidMount() {
@@ -31,6 +32,13 @@ class PatternProvider extends Component {
     this.setState({ loading: false })
     console.log(this.state)
   }
+
+  toggleMoreData = value => {
+    const isChecked = value.nativeEvent.target.checked
+    // console.log(isChecked)
+    this.setState({ viewMoreData: isChecked })
+  }
+
   render() {
     return (
       <Provider
@@ -38,6 +46,8 @@ class PatternProvider extends Component {
           test: this.state.test,
           patterns: this.state.patterns,
           loading: this.state.loading,
+          toggleMoreData: this.toggleMoreData,
+          viewMoreData: this.state.viewMoreData,
         }}
       >
         {this.props.children}
