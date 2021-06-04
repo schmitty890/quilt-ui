@@ -19,52 +19,54 @@ const ListPatterns = () => {
           {loading ? (
             <div>loading</div>
           ) : (
-            <Grid
-              templateColumns={{
-                base: "repeat(1, 1fr)",
-                md: "repeat(2, 1fr)",
-                lg: "repeat(5, 1fr)",
-              }}
-              gap={4}
-            >
-              {patterns.map(pattern => (
-                <Box
-                  key={pattern._id}
-                  maxW="sm"
-                  borderWidth="1px"
-                  borderRadius="lg"
-                  overflow="hidden"
-                >
-                  <Image src={pattern.imageURL} alt="test alt" />
+            <Box>
+              <Grid
+                templateColumns={{
+                  base: "repeat(1, 1fr)",
+                  md: "repeat(2, 1fr)",
+                  lg: "repeat(5, 1fr)",
+                }}
+                gap={4}
+              >
+                {patterns.map(pattern => (
+                  <Box
+                    key={pattern._id}
+                    maxW="sm"
+                    borderWidth="1px"
+                    borderRadius="lg"
+                    overflow="hidden"
+                  >
+                    <Image src={pattern.imageURL} alt="test alt" />
 
-                  <Box p="6">
-                    {viewMoreData ? (
-                      <Box d="flex" alignItems="baseline">
-                        <Badge
-                          px="2"
-                          colorScheme={pattern.colorScheme}
-                          variant={pattern.variant}
+                    <Box p="6">
+                      {viewMoreData ? (
+                        <Box d="flex" alignItems="baseline">
+                          <Badge
+                            px="2"
+                            colorScheme={pattern.colorScheme}
+                            variant={pattern.variant}
+                          >
+                            {pattern.category}
+                          </Badge>
+                        </Box>
+                      ) : null}
+
+                      {viewMoreData ? (
+                        <Box
+                          mt="1"
+                          fontWeight="semibold"
+                          as="h4"
+                          lineHeight="tight"
+                          isTruncated
                         >
-                          {pattern.category}
-                        </Badge>
-                      </Box>
-                    ) : null}
-
-                    {viewMoreData ? (
-                      <Box
-                        mt="1"
-                        fontWeight="semibold"
-                        as="h4"
-                        lineHeight="tight"
-                        isTruncated
-                      >
-                        {pattern.name}
-                      </Box>
-                    ) : null}
+                          {pattern.name}
+                        </Box>
+                      ) : null}
+                    </Box>
                   </Box>
-                </Box>
-              ))}
-            </Grid>
+                ))}
+              </Grid>
+            </Box>
           )}
         </Box>
       )}

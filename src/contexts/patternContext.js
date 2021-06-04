@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { test, getAllPatterns } from "../api/pattern"
+import { test, getAllPatterns, getPatternByCategory } from "../api/pattern"
 
 const { Provider, Consumer } = React.createContext()
 // Context.Consumer, Context.Provider
@@ -33,6 +33,23 @@ class PatternProvider extends Component {
     console.log(this.state)
   }
 
+  getPatternByCategory = async category => {
+    // console.log(category.nativeEvent.target.value)
+    const categoryValue = category.nativeEvent.target.value
+    let getPatternsByACategory
+    if (categoryValue === "all") {
+      this.getAllPatterns()
+    } else {
+      getPatternsByACategory = await getPatternByCategory(categoryValue)
+    }
+
+    // console.log(getPatternsByACategory)
+    if (getPatternsByACategory) {
+      this.setState({ patterns: getPatternsByACategory })
+    }
+    console.log(this.state)
+  }
+
   toggleMoreData = value => {
     const isChecked = value.nativeEvent.target.checked
     // console.log(isChecked)
@@ -48,6 +65,7 @@ class PatternProvider extends Component {
           loading: this.state.loading,
           toggleMoreData: this.toggleMoreData,
           viewMoreData: this.state.viewMoreData,
+          getPatternByCategory: this.getPatternByCategory,
         }}
       >
         {this.props.children}

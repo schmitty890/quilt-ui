@@ -1,8 +1,21 @@
-import React from "react"
-import { Box, Text, FormControl, FormLabel, Switch } from "@chakra-ui/react"
+import React, { useState } from "react"
+import {
+  Box,
+  Text,
+  FormControl,
+  FormLabel,
+  Switch,
+  Checkbox,
+  Stack,
+  Radio,
+  RadioGroup,
+} from "@chakra-ui/react"
 // import PatternForm from "../components/patternForm"
 import ListPatterns from "../components/listPatterns"
 import { PatternProvider, PatternConsumer } from "../contexts/patternContext"
+import { useFormik } from "formik"
+import getPatternByCategory from "../contexts/patternContext"
+import NavTogglePatterns from "../components/navTogglePatterns"
 
 export default function Home() {
   return (
@@ -38,6 +51,8 @@ export default function Home() {
                   defaultChecked
                 />
               </FormControl>
+
+              <NavTogglePatterns />
             </Box>
             <Box>
               {/* <PatternForm /> */}
