@@ -8,8 +8,12 @@ import {
   Grid,
   Image,
   Badge,
+  useDisclosure,
 } from "@chakra-ui/react"
 import { PatternConsumer } from "../contexts/patternContext"
+
+// import { PatternConsumer } from "../contexts/patternContext"
+import PatternModal from "./patternModal"
 
 const ListPatterns = () => {
   return (
@@ -36,7 +40,7 @@ const ListPatterns = () => {
                     borderRadius="lg"
                     overflow="hidden"
                   >
-                    <Image src={pattern.imageURL} alt="test alt" />
+                    <Image src={pattern.imageURL} alt={pattern.name} />
 
                     <Box p="6">
                       {viewMoreData ? (
@@ -62,6 +66,13 @@ const ListPatterns = () => {
                           {pattern.name}
                         </Box>
                       ) : null}
+                      <PatternModal
+                        showModalButtonText="View pattern"
+                        modalHeader={pattern.name}
+                        patternId={pattern._id}
+                        patternImage={pattern.imageURL}
+                        patternImageAlt={pattern.name}
+                      />
                     </Box>
                   </Box>
                 ))}

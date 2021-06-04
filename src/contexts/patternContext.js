@@ -50,6 +50,11 @@ class PatternProvider extends Component {
     console.log(this.state)
   }
 
+  getPatternById = async id => {
+    const patternIdValue = id
+    console.log(patternIdValue)
+  }
+
   toggleMoreData = value => {
     const isChecked = value.nativeEvent.target.checked
     // console.log(isChecked)
@@ -66,6 +71,7 @@ class PatternProvider extends Component {
           toggleMoreData: this.toggleMoreData,
           viewMoreData: this.state.viewMoreData,
           getPatternByCategory: this.getPatternByCategory,
+          getPatternById: this.getPatternById,
         }}
       >
         {this.props.children}

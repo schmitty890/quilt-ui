@@ -84,9 +84,9 @@ const ContactForm = () => {
   // TODO: change these vals to the categories needed
   const vals = [
     "texture",
-    "curls/swirls",
+    "curls-swirls",
     "feathers",
-    "floral/leaves",
+    "floral-leaves",
     "stars",
     "juvenile",
     "seasonal",
