@@ -8,9 +8,9 @@ export default function NavTogglePatterns() {
   const vals = [
     "all",
     "texture",
-    "curls/swirls",
+    "curls-swirls",
     "feathers",
-    "floral/leaves",
+    "floral-leaves",
     "stars",
     "juvenile",
     "seasonal",

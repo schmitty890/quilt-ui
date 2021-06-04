@@ -7,7 +7,7 @@
   },
   {
     "id": 2,
-    "eventTypeId": "curls/swirls",
+    "eventTypeId": "curls-swirls",
     "colorScheme": "blue",
     "variant": "outline"
   },
@@ -19,7 +19,7 @@
   },
   {
     "id": 4,
-    "eventTypeId": "floral/leaves",
+    "eventTypeId": "floral-leaves",
     "colorScheme": "green",
     "variant": "solid"
   },
