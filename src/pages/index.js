@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react"
 // import PatternForm from "../components/patternForm"
 import ListPatterns from "../components/listPatterns"
+import FavoritePatterns from "../components/favoritePatterns"
 import { PatternProvider, PatternConsumer } from "../contexts/patternContext"
 import { useFormik } from "formik"
 import getPatternByCategory from "../contexts/patternContext"
