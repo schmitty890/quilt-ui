@@ -14,7 +14,7 @@ import {
   FavoritePatternConsumer,
   FavoritePatternProvider,
 } from "../contexts/favoritePatternContext"
-import PatternModal from "../components/patternModal"
+import RemovePatternModal from "../components/removePatternModal"
 
 const FavoritePatterns = () => {
   return (
@@ -65,7 +65,7 @@ const FavoritePatterns = () => {
                         >
                           {pattern.name}
                         </Box>
-                        <PatternModal
+                        <RemovePatternModal
                           showModalButtonText="View pattern"
                           modalHeader={pattern.name}
                           patternId={pattern._id}

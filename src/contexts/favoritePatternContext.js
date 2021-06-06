@@ -25,22 +25,31 @@ class FavoritePatternProvider extends Component {
   addToFavoritePatterns = async pattern => {
     console.log("addToFavoritePatterns")
     console.log(pattern)
-
+    let toastMessage = {}
     SaveDataToLocalStorage(pattern)
 
     function SaveDataToLocalStorage(data) {
       var a = []
       // Parse the serialized data back into an aray of objects
       a = JSON.parse(localStorage.getItem("patterns")) || []
-      // Push the new data (whether it be an object or anything else) onto the array
-      a.push(data)
-      // Alert the array value
-      alert(a) // Should be something like [Object array]
-      // Re-serialize the array back into a string and store it in localStorage
-      localStorage.setItem("patterns", JSON.stringify(a))
+
+      if (!a.includes(data)) {
+        // Push the new data (whether it be an object or anything else) onto the array
+        a.push(data)
+        toastMessage = { msg: "Pattern favorited", status: "success" }
+
+        // Alert the array value
+        // alert(a) // Should be something like [Object array]
+        // Re-serialize the array back into a string and store it in localStorage
+        localStorage.setItem("patterns", JSON.stringify(a))
+      } else {
+        toastMessage = {
+          msg: "Pattern has already been favorited",
+          status: "info",
+        }
+      }
     }
 
-    let toastMessage = {}
     // if pattern is already saved in favorite state, don't save it and return already favorited message
     // make request by id to add to patterns here
     // const newFavoritePattern = await getPatternById(pattern)
@@ -49,17 +58,36 @@ class FavoritePatternProvider extends Component {
     //   patterns: [...prevState.patterns, pattern],
     // }))
 
-    setTimeout(() => {
-      console.log(this.state.patterns)
-    }, 1000)
+    return toastMessage
+  }
 
-    toastMessage = { msg: "Pattern favorited", status: "success" }
+  removeFromFavoritePatterns = async id => {
+    console.log("removeFromFavoritePatterns")
+    let favs = JSON.parse(localStorage.getItem("patterns"))
+    console.log(favs)
+    console.log(id)
+    let toastMessage = {}
+    if (favs.includes(id)) {
+      favs = favs.filter(e => e !== id)
+      localStorage.setItem("patterns", JSON.stringify(favs))
+
+      toastMessage = {
+        msg: "Pattern removed from favorites",
+        status: "success",
+      }
+    } else {
+      toastMessage = {
+        msg: "Pattern was already removed... refresh your page",
+        status: "info",
+      }
+    }
 
     return toastMessage
   }
 
   getFavoritePatterns = async () => {
     console.log("get favorites out of local storage?")
+    this.setState({ loading: true })
     let favs = JSON.parse(localStorage.getItem("patterns"))
     console.log(favs)
 
@@ -78,7 +106,7 @@ class FavoritePatternProvider extends Component {
     // setTimeout(() => {
     this.setState({ loading: false })
     console.log(this.state)
-    // }, 2000)
+    // }, 1000)
 
     // // START EXAMPLE
     // const timeOut = t => {
@@ -124,6 +152,7 @@ class FavoritePatternProvider extends Component {
           test: this.state.test,
           patterns: this.state.patterns,
           addToFavoritePatterns: this.addToFavoritePatterns,
+          removeFromFavoritePatterns: this.removeFromFavoritePatterns,
           loading: this.state.loading,
         }}
       >
