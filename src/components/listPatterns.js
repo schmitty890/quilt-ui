@@ -9,13 +9,21 @@ import {
   Image,
   Badge,
   useDisclosure,
+  Button,
+  useToast,
 } from "@chakra-ui/react"
 import { PatternConsumer } from "../contexts/patternContext"
+import {
+  FavoritePatternConsumer,
+  FavoritePatternProvider,
+} from "../contexts/favoritePatternContext"
 
 // import { PatternConsumer } from "../contexts/patternContext"
 import PatternModal from "./patternModal"
 
 const ListPatterns = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const toast = useToast()
   return (
     <PatternConsumer>
       {({ test, loading, patterns, viewMoreData }) => (
@@ -73,6 +81,29 @@ const ListPatterns = () => {
                         patternImage={pattern.imageURL}
                         patternImageAlt={pattern.name}
                       />
+                      <FavoritePatternProvider>
+                        <FavoritePatternConsumer>
+                          {({ addToFavoritePatterns }) => (
+                            <Button
+                              colorScheme="teal"
+                              onClick={e =>
+                                addToFavoritePatterns(pattern._id).then(res => {
+                                  console.log(res)
+                                  onClose()
+                                  toast({
+                                    title: `${res.msg}`,
+                                    status: res.status,
+                                    isClosable: true,
+                                    duration: 3000,
+                                  })
+                                })
+                              }
+                            >
+                              Add to favorites
+                            </Button>
+                          )}
+                        </FavoritePatternConsumer>
+                      </FavoritePatternProvider>
                     </Box>
                   </Box>
                 ))}
