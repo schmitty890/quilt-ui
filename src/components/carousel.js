@@ -23,6 +23,7 @@ import { GridItem, Text, Image } from "@chakra-ui/react"
 import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
+import { StaticImage } from "gatsby-plugin-image"
 
 const CarouselOfQuilts = () => {
   var settings = {
@@ -66,10 +67,13 @@ const CarouselOfQuilts = () => {
           bg={{ base: "white" }}
           p={4}
         >
-          <Image
-            src="https://via.placeholder.com/300x300"
-            alt="placeholder alt text"
-            alignContent="center"
+          <StaticImage
+            src="../images/one.jpeg"
+            alt="A dinosaur"
+            placeholder="blurred"
+            width={200}
+            height={200}
+            loading="eager"
           />
         </GridItem>
         <GridItem
@@ -78,10 +82,13 @@ const CarouselOfQuilts = () => {
           bg={{ base: "white" }}
           p={4}
         >
-          <Image
-            src="https://via.placeholder.com/300x300"
-            alt="placeholder alt text"
-            alignContent="center"
+          <StaticImage
+            src="../images/two.jpeg"
+            alt="A dinosaur"
+            placeholder="blurred"
+            width={200}
+            height={200}
+            loading="eager"
           />
         </GridItem>
         <GridItem
@@ -90,10 +97,13 @@ const CarouselOfQuilts = () => {
           bg={{ base: "white" }}
           p={4}
         >
-          <Image
-            src="https://via.placeholder.com/300x300"
-            alt="placeholder alt text"
-            alignContent="center"
+          <StaticImage
+            src="../images/three.jpeg"
+            alt="A dinosaur"
+            placeholder="blurred"
+            width={200}
+            height={200}
+            loading="eager"
           />
         </GridItem>
         <GridItem
@@ -102,10 +112,13 @@ const CarouselOfQuilts = () => {
           bg={{ base: "white" }}
           p={4}
         >
-          <Image
-            src="https://via.placeholder.com/300x300"
-            alt="placeholder alt text"
-            alignContent="center"
+          <StaticImage
+            src="../images/four.jpeg"
+            alt="A dinosaur"
+            placeholder="blurred"
+            width={200}
+            height={200}
+            loading="eager"
           />
         </GridItem>
         <GridItem
@@ -114,10 +127,13 @@ const CarouselOfQuilts = () => {
           bg={{ base: "white" }}
           p={4}
         >
-          <Image
-            src="https://via.placeholder.com/300x300"
-            alt="placeholder alt text"
-            alignContent="center"
+          <StaticImage
+            src="../images/five.jpeg"
+            alt="A dinosaur"
+            placeholder="blurred"
+            width={200}
+            height={200}
+            loading="eager"
           />
         </GridItem>
         <GridItem
@@ -126,10 +142,13 @@ const CarouselOfQuilts = () => {
           bg={{ base: "white" }}
           p={4}
         >
-          <Image
-            src="https://via.placeholder.com/300x300"
-            alt="placeholder alt text"
-            alignContent="center"
+          <StaticImage
+            src="../images/one.jpeg"
+            alt="A dinosaur"
+            placeholder="blurred"
+            width={200}
+            height={200}
+            loading="eager"
           />
         </GridItem>
         <GridItem
@@ -138,10 +157,13 @@ const CarouselOfQuilts = () => {
           bg={{ base: "white" }}
           p={4}
         >
-          <Image
-            src="https://via.placeholder.com/300x300"
-            alt="placeholder alt text"
-            alignContent="center"
+          <StaticImage
+            src="../images/one.jpeg"
+            alt="A dinosaur"
+            placeholder="blurred"
+            width={200}
+            height={200}
+            loading="eager"
           />
         </GridItem>
         <GridItem
@@ -150,82 +172,13 @@ const CarouselOfQuilts = () => {
           bg={{ base: "white" }}
           p={4}
         >
-          <Image
-            src="https://via.placeholder.com/300x300"
-            alt="placeholder alt text"
-            alignContent="center"
-          />
-        </GridItem>
-        <GridItem
-          rowSpan={12}
-          colSpan={{ base: 3, md: 2, lg: 1 }}
-          bg={{ base: "white" }}
-          p={4}
-        >
-          <Image
-            src="https://via.placeholder.com/300x300"
-            alt="placeholder alt text"
-            alignContent="center"
-          />
-        </GridItem>
-        <GridItem
-          rowSpan={12}
-          colSpan={{ base: 3, md: 2, lg: 1 }}
-          bg={{ base: "white" }}
-          p={4}
-        >
-          <Image
-            src="https://via.placeholder.com/300x300"
-            alt="placeholder alt text"
-            alignContent="center"
-          />
-        </GridItem>
-        <GridItem
-          rowSpan={12}
-          colSpan={{ base: 3, md: 2, lg: 1 }}
-          bg={{ base: "white" }}
-          p={4}
-        >
-          <Image
-            src="https://via.placeholder.com/300x300"
-            alt="placeholder alt text"
-            alignContent="center"
-          />
-        </GridItem>
-        <GridItem
-          rowSpan={12}
-          colSpan={{ base: 3, md: 2, lg: 1 }}
-          bg={{ base: "white" }}
-          p={4}
-        >
-          <Image
-            src="https://via.placeholder.com/300x300"
-            alt="placeholder alt text"
-            alignContent="center"
-          />
-        </GridItem>
-        <GridItem
-          rowSpan={12}
-          colSpan={{ base: 3, md: 2, lg: 1 }}
-          bg={{ base: "white" }}
-          p={4}
-        >
-          <Image
-            src="https://via.placeholder.com/300x300"
-            alt="placeholder alt text"
-            alignContent="center"
-          />
-        </GridItem>
-        <GridItem
-          rowSpan={12}
-          colSpan={{ base: 3, md: 2, lg: 1 }}
-          bg={{ base: "white" }}
-          p={4}
-        >
-          <Image
-            src="https://via.placeholder.com/300x300"
-            alt="placeholder alt text"
-            alignContent="center"
+          <StaticImage
+            src="../images/one.jpeg"
+            alt="A dinosaur"
+            placeholder="blurred"
+            width={200}
+            height={200}
+            loading="eager"
           />
         </GridItem>
       </Slider>

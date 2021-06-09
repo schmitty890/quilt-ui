@@ -2,6 +2,7 @@ import React from "react"
 import Patterns from "./patterns"
 import Header from "../components/header"
 import CarouselOfQuilts from "../components/carousel"
+import { StaticImage } from "gatsby-plugin-image"
 
 import {
   Box,
@@ -19,11 +20,19 @@ export default function Home() {
       <Grid templateColumns="repeat(12, 1fr)" gap={4}>
         <GridItem colSpan={{ base: 12 }} bg="tomato">
           <Text fontSize="xl">Header text/logo here</Text>
-          <Image
-            src="https://via.placeholder.com/100"
+          <StaticImage
+            src="../images/one.jpeg"
+            alt="A dinosaur"
+            placeholder="blurred"
+            width={200}
+            height={200}
+            loading="eager"
+          />
+          {/* <Image
+            src="../images/one.jpeg"
             boxSize="100px"
             alt="placeholder alt text"
-          />
+          /> */}
         </GridItem>
       </Grid>
       <Grid templateColumns="repeat(12, 1fr)" gap={4} mt={4}>
@@ -31,20 +40,35 @@ export default function Home() {
           <Text fontSize="xl">
             cool picture of longarm or quilt or something
           </Text>
-          <Image
+          <StaticImage
+            src="../images/two.jpeg"
+            alt="A dinosaur"
+            placeholder="blurred"
+            width={800}
+            loading="eager"
+          />
+          {/* <Image
             src="https://via.placeholder.com/800x200"
             alt="placeholder alt text"
             alignContent="center"
-          />
+          /> */}
         </GridItem>
         <GridItem colSpan={{ base: 12, md: 6 }} bg="papayawhip">
           <Grid templateColumns="repeat(12, 1fr)" gap={4}>
             <GridItem colSpan={{ base: 12, md: 6 }}>
-              <Image
+              <StaticImage
+                src="../images/one.jpeg"
+                alt="A dinosaur"
+                placeholder="blurred"
+                width={200}
+                height={200}
+                loading="eager"
+              />
+              {/* <Image
                 src="https://via.placeholder.com/300x300"
                 alt="placeholder alt text"
                 alignContent="center"
-              />
+              /> */}
             </GridItem>
             <GridItem colSpan={{ base: 12, md: 6 }} p={4}>
               <Text fontSize="xl">quilt title</Text>
