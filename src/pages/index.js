@@ -1,8 +1,17 @@
 import React from "react"
 import Patterns from "./patterns"
 import Header from "../components/header"
+import CarouselOfQuilts from "../components/carousel"
 
-import { Box, Text, Grid, GridItem, Image } from "@chakra-ui/react"
+import {
+  Box,
+  Text,
+  Grid,
+  GridItem,
+  Image,
+  Button,
+  Link,
+} from "@chakra-ui/react"
 
 export default function Home() {
   return (
@@ -37,7 +46,7 @@ export default function Home() {
                 alignContent="center"
               />
             </GridItem>
-            <GridItem colSpan={{ base: 12, md: 6 }}>
+            <GridItem colSpan={{ base: 12, md: 6 }} p={4}>
               <Text fontSize="xl">quilt title</Text>
               <Text fontSize="lg">info about quilt</Text>
               <Text fontSize="md">pattern used</Text>
@@ -47,13 +56,25 @@ export default function Home() {
           </Grid>
         </GridItem>
 
-        <GridItem colSpan={{ base: 12, md: 3 }} bg="papayawhip">
-          <Text fontSize="xl">other info</Text>
+        <GridItem colSpan={{ base: 12, md: 3 }} bg="papayawhip" p={4}>
+          <Text fontSize="xl">Patterns</Text>
+          <Text fontSize="md">Over 100+ patterns in my collection!</Text>
+          <Link
+            href="/patterns"
+            _hover={{
+              textDecoration: "none",
+            }}
+          >
+            <Button colorScheme="purple" variant="solid">
+              View patterns
+            </Button>
+          </Link>
         </GridItem>
         <GridItem colSpan={{ base: 12, md: 3 }} bg="tomato">
           <Text fontSize="xl">more other info</Text>
         </GridItem>
       </Grid>
+      <CarouselOfQuilts />
     </Box>
   )
 }
