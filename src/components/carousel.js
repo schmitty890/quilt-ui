@@ -143,7 +143,7 @@ const CarouselOfQuilts = () => {
           p={4}
         >
           <StaticImage
-            src="../images/one.jpeg"
+            src="../images/six.jpeg"
             alt="A dinosaur"
             placeholder="blurred"
             width={200}
@@ -158,7 +158,7 @@ const CarouselOfQuilts = () => {
           p={4}
         >
           <StaticImage
-            src="../images/one.jpeg"
+            src="../images/seven.jpeg"
             alt="A dinosaur"
             placeholder="blurred"
             width={200}
@@ -173,7 +173,7 @@ const CarouselOfQuilts = () => {
           p={4}
         >
           <StaticImage
-            src="../images/one.jpeg"
+            src="../images/test.jpeg"
             alt="A dinosaur"
             placeholder="blurred"
             width={200}

@@ -3,6 +3,7 @@ import Patterns from "./patterns"
 import Header from "../components/header"
 import CarouselOfQuilts from "../components/carousel"
 import { StaticImage } from "gatsby-plugin-image"
+import NavBar from "../components/navBar"
 
 import {
   Box,
@@ -18,50 +19,21 @@ export default function Home() {
   return (
     <Box p={8}>
       <Grid templateColumns="repeat(12, 1fr)" gap={4}>
-        <GridItem colSpan={{ base: 12 }} bg="tomato">
-          <Text fontSize="xl">Header text/logo here</Text>
-          <StaticImage
-            src="../images/one.jpeg"
-            alt="A dinosaur"
-            placeholder="blurred"
-            width={200}
-            height={200}
-            loading="eager"
-          />
-          {/* <Image
-            src="../images/one.jpeg"
-            boxSize="100px"
-            alt="placeholder alt text"
-          /> */}
+        <GridItem colSpan={{ base: 12 }} bg="white">
+          <NavBar />
         </GridItem>
       </Grid>
       <Grid templateColumns="repeat(12, 1fr)" gap={4} mt={4}>
-        <GridItem colSpan={{ base: 12 }}>
-          <Text fontSize="xl">
-            cool picture of longarm or quilt or something
-          </Text>
-          <StaticImage
-            src="../images/two.jpeg"
-            alt="A dinosaur"
-            placeholder="blurred"
-            width={800}
-            loading="eager"
-          />
-          {/* <Image
-            src="https://via.placeholder.com/800x200"
-            alt="placeholder alt text"
-            alignContent="center"
-          /> */}
-        </GridItem>
         <GridItem colSpan={{ base: 12, md: 6 }} bg="papayawhip">
           <Grid templateColumns="repeat(12, 1fr)" gap={4}>
             <GridItem colSpan={{ base: 12, md: 6 }}>
               <StaticImage
-                src="../images/one.jpeg"
+                src="../images/test.jpeg"
                 alt="A dinosaur"
                 placeholder="blurred"
-                width={200}
-                height={200}
+                // height={200}
+                // style={{ height: "100%", width: "100%" }}
+                imgStyle={{ objectFit: "contain" }}
                 loading="eager"
               />
               {/* <Image
