@@ -33,7 +33,7 @@ const CarouselOfQuilts = () => {
     slidesToShow: 6,
     slidesToScroll: 2,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 7000,
     responsive: [
       {
         breakpoint: 1024,

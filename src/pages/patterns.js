@@ -17,6 +17,8 @@ import { PatternProvider, PatternConsumer } from "../contexts/patternContext"
 import { useFormik } from "formik"
 import getPatternByCategory from "../contexts/patternContext"
 import NavTogglePatterns from "../components/navTogglePatterns"
+import NavBar from "../components/navBar"
+import Footer from "../components/footer"
 
 export default function Patterns() {
   return (
@@ -24,6 +26,7 @@ export default function Patterns() {
       <PatternConsumer>
         {({ toggleMoreData }) => (
           <Box>
+            <NavBar />
             <Box
               p={8}
               border="1px"
@@ -59,6 +62,7 @@ export default function Patterns() {
               {/* <PatternForm /> */}
               <ListPatterns />
             </Box>
+            <Footer />
           </Box>
         )}
       </PatternConsumer>

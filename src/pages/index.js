@@ -19,11 +19,7 @@ import {
 export default function Home() {
   return (
     <Box>
-      <Grid templateColumns="repeat(12, 1fr)" gap={4}>
-        <GridItem colSpan={{ base: 12 }} bg="white">
-          <NavBar />
-        </GridItem>
-      </Grid>
+      <NavBar />
       <Grid templateColumns="repeat(12, 1fr)" gap={4} mt={4}>
         <GridItem colSpan={{ base: 12, md: 6 }} bg="gray.50">
           <Grid templateColumns="repeat(12, 1fr)" gap={4}>

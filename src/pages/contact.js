@@ -79,11 +79,7 @@ const ContactForm = () => {
   const toast = useToast()
   return (
     <Box>
-      <Grid templateColumns="repeat(12, 1fr)" gap={4}>
-        <GridItem colSpan={{ base: 12 }} bg="white">
-          <NavBar />
-        </GridItem>
-      </Grid>
+      <NavBar />
 
       <GridItem rowSpan={1} colSpan={{ base: 12 }} bg={{ base: "white" }} p={4}>
         <form onSubmit={handleSubmit}>
