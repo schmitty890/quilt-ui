@@ -55,18 +55,19 @@ export default function WithSubnavigation() {
           />
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
-          <Text
+          <StaticImage
+            src="../images/logo3.png"
+            alt="Quilter Sara logo"
+            placeholder="blurred"
+            height={75}
+          />
+          {/* <Text
             textAlign={useBreakpointValue({ base: "center", md: "left" })}
             fontFamily={"heading"}
             color={useColorModeValue("gray.800", "white")}
           >
-            <StaticImage
-              src="../images/logo3.png"
-              alt="Quilter Sara logo"
-              placeholder="blurred"
-              height={50}
-            />
-          </Text>
+            logo
+          </Text> */}
 
           <Flex display={{ base: "none", md: "flex" }} ml={10}>
             <DesktopNav />
