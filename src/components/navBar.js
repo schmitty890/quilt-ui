@@ -307,10 +307,10 @@ const NAV_ITEMS = [
   },
   {
     label: "Patterns",
-    href: "patterns",
+    href: "/patterns",
   },
   {
     label: "Contact",
-    href: "contact",
+    href: "/contact",
   },
 ]
