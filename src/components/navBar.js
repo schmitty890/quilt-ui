@@ -30,7 +30,7 @@ export default function WithSubnavigation() {
   return (
     <Box>
       <Flex
-        bg={useColorModeValue("white", "gray.800")}
+        bg={useColorModeValue("gray.50", "gray.800")}
         color={useColorModeValue("gray.600", "white")}
         minH={"60px"}
         py={{ base: 2 }}
@@ -59,15 +59,9 @@ export default function WithSubnavigation() {
             src="../images/logo3.png"
             alt="Quilter Sara logo"
             placeholder="blurred"
-            height={75}
+            height={50}
+            mb={10}
           />
-          {/* <Text
-            textAlign={useBreakpointValue({ base: "center", md: "left" })}
-            fontFamily={"heading"}
-            color={useColorModeValue("gray.800", "white")}
-          >
-            logo
-          </Text> */}
 
           <Flex display={{ base: "none", md: "flex" }} ml={10}>
             <DesktopNav />
@@ -124,6 +118,8 @@ const DesktopNav = () => {
                 href={navItem.href ?? "#"}
                 fontSize={"sm"}
                 fontWeight={500}
+                top={3}
+                position="relative"
                 // color={useColorModeValue("gray.600", "gray.200")}
                 _hover={{
                   textDecoration: "none",
@@ -263,41 +259,46 @@ const MobileNavItem = NAV_ITEMS => {
 
 const NAV_ITEMS = [
   {
-    label: "Inspiration",
+    label: "About",
     children: [
       {
-        label: "Explore Design Work",
-        subLabel: "Trending Design to inspire you",
+        label: "About Sara",
+        subLabel: "Who is she?",
         href: "#",
       },
       {
         label: "New & Noteworthy",
-        subLabel: "Up-and-coming Designers",
+        subLabel: "Whats new",
         href: "#",
       },
     ],
   },
   {
-    label: "Find Work",
+    label: "The Long Arm",
     children: [
       {
-        label: "Job Board",
-        subLabel: "Find your dream design job",
+        label: "Link One",
+        subLabel: "About the long arm",
         href: "#",
       },
       {
-        label: "Freelance Projects",
-        subLabel: "An exclusive list for contract work",
+        label: "Custom quilts",
+        subLabel: "Description for custom quilts",
+        href: "#",
+      },
+      {
+        label: "Threads",
+        subLabel: "All the threads",
         href: "#",
       },
     ],
   },
   {
-    label: "Learn Design",
-    href: "#",
+    label: "Patterns",
+    href: "patterns",
   },
   {
-    label: "Hire Designers",
+    label: "Contact",
     href: "#",
   },
 ]

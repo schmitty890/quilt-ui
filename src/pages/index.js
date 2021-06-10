@@ -4,6 +4,7 @@ import Header from "../components/header"
 import CarouselOfQuilts from "../components/carousel"
 import { StaticImage } from "gatsby-plugin-image"
 import NavBar from "../components/navBar"
+import Footer from "../components/footer"
 
 import {
   Box,
@@ -24,7 +25,7 @@ export default function Home() {
         </GridItem>
       </Grid>
       <Grid templateColumns="repeat(12, 1fr)" gap={4} mt={4}>
-        <GridItem colSpan={{ base: 12, md: 6 }} bg="papayawhip">
+        <GridItem colSpan={{ base: 12, md: 6 }} bg="gray.50">
           <Grid templateColumns="repeat(12, 1fr)" gap={4}>
             <GridItem colSpan={{ base: 12, md: 6 }}>
               <StaticImage
@@ -52,7 +53,7 @@ export default function Home() {
           </Grid>
         </GridItem>
 
-        <GridItem colSpan={{ base: 12, md: 3 }} bg="papayawhip" p={4}>
+        <GridItem colSpan={{ base: 12, md: 3 }} bg="gray.50" p={4}>
           <Text fontSize="xl">Patterns</Text>
           <Text fontSize="md">Over 100+ patterns in my collection!</Text>
           <Link
@@ -66,11 +67,23 @@ export default function Home() {
             </Button>
           </Link>
         </GridItem>
-        <GridItem colSpan={{ base: 12, md: 3 }} bg="tomato">
-          <Text fontSize="xl">more other info</Text>
+        <GridItem colSpan={{ base: 12, md: 3 }} bg="gray.50" p={4}>
+          <Text fontSize="xl">Threads</Text>
+          <Text fontSize="md">Over 350+ patterns in my collection!</Text>
+          <Link
+            href="#"
+            _hover={{
+              textDecoration: "none",
+            }}
+          >
+            <Button colorScheme="purple" variant="solid">
+              View threads
+            </Button>
+          </Link>
         </GridItem>
       </Grid>
       <CarouselOfQuilts />
+      <Footer />
     </Box>
   )
 }
