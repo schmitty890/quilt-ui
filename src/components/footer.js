@@ -15,6 +15,7 @@ import {
 import { StaticImage } from "gatsby-plugin-image"
 import { FaHeart } from "react-icons/fa"
 import { BiMailSend } from "react-icons/bi"
+import { GiSewingString } from "react-icons/gi"
 
 // const Logo = props => {
 //   return (
@@ -169,6 +170,8 @@ export default function Footer() {
         </Flex>
         <Text pt={6} fontSize={"sm"} textAlign={"center"}>
           © <DateOfTheYear /> Quilting Sara. All rights reserved. Made with{" "}
+          <GiSewingString style={{ display: "inline" }} />
+          &nbsp;+&nbsp;
           <FaHeart style={{ display: "inline" }} />
         </Text>
       </Box>
