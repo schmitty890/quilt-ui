@@ -18,7 +18,7 @@ import {
 
 export default function Home() {
   return (
-    <Box p={8}>
+    <Box>
       <Grid templateColumns="repeat(12, 1fr)" gap={4}>
         <GridItem colSpan={{ base: 12 }} bg="white">
           <NavBar />
