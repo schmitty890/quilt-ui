@@ -1,24 +1,5 @@
 import React from "react"
-import { GridItem, Text, Image } from "@chakra-ui/react"
-// import {
-//   FaNodeJs,
-//   FaReact,
-//   FaVuejs,
-//   FaGulp,
-//   FaHtml5,
-//   FaCss3,
-//   FaLess,
-//   FaSass,
-// } from "react-icons/fa"
-
-// import {
-//   SiMongodb,
-//   SiMysql,
-//   SiJsonwebtokens,
-//   SiJavascript,
-//   SiJquery,
-//   SiBootstrap,
-// } from "react-icons/si"
+import { GridItem } from "@chakra-ui/react"
 
 import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"

@@ -15,7 +15,6 @@ import {
   PopoverTrigger,
   PopoverContent,
   useColorModeValue,
-  useBreakpointValue,
   useDisclosure,
 } from "@chakra-ui/react"
 import {
@@ -93,19 +92,25 @@ export default function WithSubnavigation() {
               >
                 Sign In
               </Button>
-              <Button
-                display={{ base: "none", md: "inline-flex" }}
-                fontSize={"sm"}
-                fontWeight={600}
-                color={"white"}
-                bg={"purple.600"}
-                href={"#"}
+              <Link
+                href="/register"
                 _hover={{
-                  bg: "purple.700",
+                  textDecoration: "none",
                 }}
               >
-                Sign Up
-              </Button>
+                <Button
+                  display={{ base: "none", md: "inline-flex" }}
+                  fontSize={"sm"}
+                  fontWeight={600}
+                  color={"white"}
+                  bg={"purple.600"}
+                  _hover={{
+                    bg: "purple.700",
+                  }}
+                >
+                  Sign Up
+                </Button>
+              </Link>
             </Stack>
           </Flex>
 
@@ -272,6 +277,7 @@ const MobileNavItem = NAV_ITEMS => {
 const NAV_ITEMS = [
   {
     label: "About",
+    href: "#",
     children: [
       {
         label: "About Sara",
@@ -287,6 +293,7 @@ const NAV_ITEMS = [
   },
   {
     label: "The Long Arm",
+    href: "#",
     children: [
       {
         label: "Link One",
@@ -308,6 +315,18 @@ const NAV_ITEMS = [
   {
     label: "Patterns",
     href: "/patterns",
+    children: [
+      {
+        label: "All patterns",
+        subLabel: "View every pattern on file",
+        href: "/patterns",
+      },
+      {
+        label: "Your favorited patterns",
+        subLabel: "View your favorited patterns",
+        href: "/favs",
+      },
+    ],
   },
   {
     label: "Contact",

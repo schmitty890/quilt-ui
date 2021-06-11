@@ -94,14 +94,16 @@ class FavoritePatternProvider extends Component {
     const promises = []
 
     console.log(typeof favs)
-    favs.map(async fav => {
-      const favPattern = await getPatternById(fav)
-      console.log(favPattern)
-      // favsToSaveToState.push(favPattern)
-      this.setState(prevState => ({
-        patterns: [...prevState.patterns, favPattern],
-      }))
-    })
+    if (favs !== null) {
+      favs.map(async fav => {
+        const favPattern = await getPatternById(fav)
+        console.log(favPattern)
+        // favsToSaveToState.push(favPattern)
+        this.setState(prevState => ({
+          patterns: [...prevState.patterns, favPattern],
+        }))
+      })
+    }
 
     // setTimeout(() => {
     this.setState({ loading: false })

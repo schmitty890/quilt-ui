@@ -1,10 +1,6 @@
 import React from "react"
 import {
   Box,
-  Text,
-  Switch,
-  FormControl,
-  FormLabel,
   Grid,
   Image,
   Spinner,

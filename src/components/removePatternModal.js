@@ -9,7 +9,6 @@ import {
   ModalCloseButton,
   Button,
   Center,
-  Lorem,
   useDisclosure,
   Image,
   useToast,

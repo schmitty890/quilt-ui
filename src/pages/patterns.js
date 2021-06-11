@@ -1,15 +1,5 @@
 import React, { useState } from "react"
-import {
-  Box,
-  Text,
-  FormControl,
-  FormLabel,
-  Switch,
-  Checkbox,
-  Stack,
-  Radio,
-  RadioGroup,
-} from "@chakra-ui/react"
+import { Box, Text, FormControl, FormLabel, Switch } from "@chakra-ui/react"
 // import PatternForm from "../components/patternForm"
 import ListPatterns from "../components/listPatterns"
 import FavoritePatterns from "../components/favoritePatterns"

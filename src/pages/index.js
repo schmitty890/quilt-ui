@@ -1,20 +1,10 @@
 import React from "react"
-import Patterns from "./patterns"
-import Header from "../components/header"
 import CarouselOfQuilts from "../components/carousel"
 import { StaticImage } from "gatsby-plugin-image"
 import NavBar from "../components/navBar"
 import Footer from "../components/footer"
 
-import {
-  Box,
-  Text,
-  Grid,
-  GridItem,
-  Image,
-  Button,
-  Link,
-} from "@chakra-ui/react"
+import { Box, Text, Grid, GridItem, Button, Link } from "@chakra-ui/react"
 
 export default function Home() {
   return (
