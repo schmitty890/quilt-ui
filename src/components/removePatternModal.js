@@ -8,6 +8,7 @@ import {
   ModalBody,
   ModalCloseButton,
   Button,
+  Center,
   Lorem,
   useDisclosure,
   Image,
@@ -33,7 +34,7 @@ const PatternModal = ({
       <FavoritePatternConsumer>
         {({ removeFromFavoritePatterns }) => (
           <>
-            <Button colorScheme="pink" size="xs" onClick={onOpen}>
+            <Button colorScheme="purple" size="lg" onClick={onOpen}>
               {showModalButtonText}
             </Button>
             <Modal isOpen={isOpen} size={"full"} onClose={onClose}>
@@ -42,7 +43,9 @@ const PatternModal = ({
                 <ModalHeader>{modalHeader}</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
-                  <Image src={patternImage} alt={patternImageAlt} />
+                  <Center>
+                    <Image src={patternImage} alt={patternImageAlt} />
+                  </Center>
                 </ModalBody>
 
                 <ModalFooter>
@@ -50,7 +53,7 @@ const PatternModal = ({
                     Cancel
                   </Button>
                   <Button
-                    colorScheme="teal"
+                    colorScheme="red"
                     onClick={e =>
                       removeFromFavoritePatterns(patternId).then(res => {
                         console.log(res)

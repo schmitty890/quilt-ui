@@ -135,7 +135,7 @@ const ContactForm = () => {
 
           <Button
             mt={4}
-            colorScheme="linkedin"
+            colorScheme="purple"
             isLoading={isLoading}
             type="submit"
           >

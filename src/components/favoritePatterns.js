@@ -7,6 +7,8 @@ import {
   FormLabel,
   Grid,
   Image,
+  Spinner,
+  Center,
   Badge,
   useDisclosure,
 } from "@chakra-ui/react"
@@ -23,7 +25,10 @@ const FavoritePatterns = () => {
         {({ patterns, loading }) => (
           <Box p={8} border="1px" borderColor="gray.200">
             {loading ? (
-              <div>loading favorites...</div>
+              <Center>
+                <Spinner color="purple.600" />
+                <div>&nbsp; &nbsp; loading favorite patterns</div>
+              </Center>
             ) : (
               <Box>
                 Favorites

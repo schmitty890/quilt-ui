@@ -7,9 +7,11 @@ import {
   FormLabel,
   Grid,
   Image,
+  Center,
   Badge,
   useDisclosure,
   Button,
+  Spinner,
   useToast,
 } from "@chakra-ui/react"
 import { PatternConsumer } from "../contexts/patternContext"
@@ -29,7 +31,10 @@ const ListPatterns = () => {
       {({ test, loading, patterns, viewMoreData }) => (
         <Box p={8} border="1px" borderColor="gray.200">
           {loading ? (
-            <div>loading</div>
+            <Center>
+              <Spinner color="purple.600" />
+              <div>&nbsp; &nbsp; loading patterns</div>
+            </Center>
           ) : (
             <Box>
               <Grid
@@ -48,7 +53,12 @@ const ListPatterns = () => {
                     borderRadius="lg"
                     overflow="hidden"
                   >
-                    <Image src={pattern.imageURL} alt={pattern.name} />
+                    <Image
+                      src={pattern.imageURL}
+                      fallbackSrc="https://via.placeholder.com/500"
+                      placeholder="blurred"
+                      alt={pattern.name}
+                    />
 
                     <Box p="6">
                       {viewMoreData ? (
@@ -85,7 +95,8 @@ const ListPatterns = () => {
                         <FavoritePatternConsumer>
                           {({ addToFavoritePatterns }) => (
                             <Button
-                              colorScheme="teal"
+                              colorScheme="purple"
+                              mt={4}
                               onClick={e =>
                                 addToFavoritePatterns(pattern._id).then(res => {
                                   console.log(res)
