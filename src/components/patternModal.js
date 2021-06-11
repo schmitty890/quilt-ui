@@ -14,6 +14,7 @@ import {
   Image,
   useToast,
 } from "@chakra-ui/react"
+import { ViewIcon } from "@chakra-ui/icons"
 // import the favoritePatternContext
 import {
   FavoritePatternProvider,
@@ -34,7 +35,12 @@ const PatternModal = ({
       <FavoritePatternConsumer>
         {({ addToFavoritePatterns }) => (
           <>
-            <Button colorScheme="pink" size="lg" onClick={onOpen}>
+            <Button
+              colorScheme="pink"
+              leftIcon={<ViewIcon />}
+              size="md"
+              onClick={onOpen}
+            >
               {showModalButtonText}
             </Button>
             <Modal isOpen={isOpen} size={"full"} onClose={onClose}>

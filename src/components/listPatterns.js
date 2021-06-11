@@ -14,6 +14,7 @@ import {
   Spinner,
   useToast,
 } from "@chakra-ui/react"
+import { AddIcon } from "@chakra-ui/icons"
 import { PatternConsumer } from "../contexts/patternContext"
 import {
   FavoritePatternConsumer,
@@ -96,6 +97,8 @@ const ListPatterns = () => {
                           {({ addToFavoritePatterns }) => (
                             <Button
                               colorScheme="purple"
+                              variant="outline"
+                              leftIcon={<AddIcon />}
                               mt={4}
                               onClick={e =>
                                 addToFavoritePatterns(pattern._id).then(res => {
