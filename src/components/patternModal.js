@@ -37,26 +37,36 @@ const PatternModal = ({
           <>
             <Button
               colorScheme="pink"
+              variant="outline"
               leftIcon={<ViewIcon />}
               size="md"
               onClick={onOpen}
             >
               {showModalButtonText}
             </Button>
-            <Modal isOpen={isOpen} size={"full"} onClose={onClose}>
+            <Modal
+              isOpen={isOpen}
+              size={"xl"}
+              onClose={onClose}
+              maxHeight={100}
+            >
               <ModalOverlay />
               <ModalContent>
                 <ModalHeader>{modalHeader}</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
                   <Center>
-                    <Image src={patternImage} alt={patternImageAlt} />
+                    <Image
+                      maxHeight={450}
+                      src={patternImage}
+                      alt={patternImageAlt}
+                    />
                   </Center>
                 </ModalBody>
 
                 <ModalFooter>
                   <Button variant="ghost" mr={3} onClick={onClose}>
-                    Cancel
+                    Close
                   </Button>
                   <Button
                     colorScheme="purple"
