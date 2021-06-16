@@ -277,7 +277,6 @@ const MobileNavItem = NAV_ITEMS => {
 const NAV_ITEMS = [
   {
     label: "About",
-    href: "#",
     children: [
       {
         label: "About Sara",
@@ -293,7 +292,6 @@ const NAV_ITEMS = [
   },
   {
     label: "The Long Arm",
-    href: "#",
     children: [
       {
         label: "Link One",
@@ -314,7 +312,6 @@ const NAV_ITEMS = [
   },
   {
     label: "Patterns",
-    href: "/patterns",
     children: [
       {
         label: "All patterns",
