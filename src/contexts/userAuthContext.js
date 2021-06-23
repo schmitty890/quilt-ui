@@ -12,7 +12,7 @@ class UserAuthProvider extends Component {
 
   componentDidMount() {
     this.getUser()
-    this.logState()
+    // this.logState()
   }
 
   getUser = async () => {
@@ -39,6 +39,8 @@ class UserAuthProvider extends Component {
   }
   logout = () => {
     console.log("log user out clear local storage")
+    localStorage.clear()
+    window.location.href = "/"
   }
 
   render() {
