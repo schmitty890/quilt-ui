@@ -105,7 +105,7 @@ export default function WithSubnavigation() {
                         spacing={6}
                       >
                         <Button
-                          display={{ base: "none", md: "inline-flex" }}
+                          // display={{ base: "none", md: "inline-flex" }}
                           fontSize={"sm"}
                           fontWeight={600}
                           color={"white"}
@@ -125,15 +125,25 @@ export default function WithSubnavigation() {
                         direction={"row"}
                         spacing={6}
                       >
-                        <Button
-                          as={"a"}
-                          fontSize={"sm"}
-                          fontWeight={400}
-                          variant={"link"}
-                          href={"#"}
+                        <Link
+                          href="/"
+                          _hover={{
+                            textDecoration: "none",
+                          }}
                         >
-                          Sign In
-                        </Button>
+                          <Button
+                            // display={{ base: "none", md: "inline-flex" }}
+                            fontWeight={600}
+                            href={"#"}
+                            // color={"white"}
+                            // bg={"purple.600"}
+                            // _hover={{
+                            //   bg: "purple.700",
+                            // }}
+                          >
+                            Sign In
+                          </Button>
+                        </Link>
                         <Link
                           href="/register"
                           _hover={{
@@ -141,8 +151,8 @@ export default function WithSubnavigation() {
                           }}
                         >
                           <Button
-                            display={{ base: "none", md: "inline-flex" }}
-                            fontSize={"sm"}
+                            // display={{ base: "none", md: "inline-flex" }}
+                            // fontSize={{ base: "xs", md: "sm" }}
                             fontWeight={600}
                             color={"white"}
                             bg={"purple.600"}
