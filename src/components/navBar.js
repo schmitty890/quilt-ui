@@ -25,101 +25,148 @@ import {
 } from "@chakra-ui/icons"
 import { StaticImage } from "gatsby-plugin-image"
 
+import { UserAuthProvider, UserAuthConsumer } from "../contexts/userAuthContext"
+
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure()
 
   return (
-    <Box>
-      <Grid templateColumns="repeat(12, 1fr)" gap={4}>
-        <GridItem colSpan={{ base: 12 }} bg="white">
-          <Flex
-            bg={useColorModeValue("gray.50", "gray.800")}
-            color={useColorModeValue("gray.600", "white")}
-            minH={"60px"}
-            py={{ base: 2 }}
-            px={{ base: 4 }}
-            borderBottom={1}
-            borderStyle={"solid"}
-            borderColor={useColorModeValue("gray.200", "gray.900")}
-            align={"center"}
-          >
-            <Flex
-              flex={{ base: 1, md: "auto" }}
-              ml={{ base: -2 }}
-              display={{ base: "flex", md: "none" }}
-            >
-              <IconButton
-                onClick={onToggle}
-                icon={
-                  isOpen ? (
-                    <CloseIcon w={3} h={3} />
-                  ) : (
-                    <HamburgerIcon w={5} h={5} />
-                  )
-                }
-                variant={"ghost"}
-                aria-label={"Toggle Navigation"}
-              />
-            </Flex>
-            <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
-              <Link href="/">
-                <StaticImage
-                  src="../images/logo3.png"
-                  alt="Quilter Sara logo"
-                  placeholder="blurred"
-                  height={50}
-                  mb={10}
-                />
-              </Link>
+    <UserAuthProvider>
+      <UserAuthConsumer>
+        {({ userId, logout, loading }) => (
+          <Box>
+            <Grid templateColumns="repeat(12, 1fr)" gap={4}>
+              <GridItem colSpan={{ base: 12 }} bg="white">
+                {loading ? (
+                  <Flex
+                    bg={"gray.50"}
+                    color={"gray.600"}
+                    minH={"60px"}
+                    py={{ base: 2 }}
+                    px={{ base: 4 }}
+                    borderBottom={1}
+                    borderStyle={"solid"}
+                    borderColor={"gray.200"}
+                    align={"center"}
+                  ></Flex>
+                ) : (
+                  <Flex
+                    bg={"gray.50"}
+                    color={"gray.600"}
+                    minH={"60px"}
+                    py={{ base: 2 }}
+                    px={{ base: 4 }}
+                    borderBottom={1}
+                    borderStyle={"solid"}
+                    borderColor={"gray.200"}
+                    align={"center"}
+                  >
+                    <Flex
+                      flex={{ base: 1, md: "auto" }}
+                      ml={{ base: -2 }}
+                      display={{ base: "flex", md: "none" }}
+                    >
+                      <IconButton
+                        onClick={onToggle}
+                        icon={
+                          isOpen ? (
+                            <CloseIcon w={3} h={3} />
+                          ) : (
+                            <HamburgerIcon w={5} h={5} />
+                          )
+                        }
+                        variant={"ghost"}
+                        aria-label={"Toggle Navigation"}
+                      />
+                    </Flex>
+                    <Flex
+                      flex={{ base: 1 }}
+                      justify={{ base: "center", md: "start" }}
+                    >
+                      <Link href="/">
+                        <StaticImage
+                          src="../images/logo3.png"
+                          alt="Quilter Sara logo"
+                          placeholder="blurred"
+                          height={50}
+                          mb={10}
+                        />
+                      </Link>
 
-              <Flex display={{ base: "none", md: "flex" }} ml={10}>
-                <DesktopNav />
-              </Flex>
-            </Flex>
+                      <Flex display={{ base: "none", md: "flex" }} ml={10}>
+                        <DesktopNav />
+                      </Flex>
+                    </Flex>
+                    {userId ? (
+                      <Stack
+                        flex={{ base: 1, md: 0 }}
+                        justify={"flex-end"}
+                        direction={"row"}
+                        spacing={6}
+                      >
+                        <Button
+                          display={{ base: "none", md: "inline-flex" }}
+                          fontSize={"sm"}
+                          fontWeight={600}
+                          color={"white"}
+                          onClick={logout}
+                          bg={"purple.600"}
+                          _hover={{
+                            bg: "purple.700",
+                          }}
+                        >
+                          Log out
+                        </Button>
+                      </Stack>
+                    ) : (
+                      <Stack
+                        flex={{ base: 1, md: 0 }}
+                        justify={"flex-end"}
+                        direction={"row"}
+                        spacing={6}
+                      >
+                        <Button
+                          as={"a"}
+                          fontSize={"sm"}
+                          fontWeight={400}
+                          variant={"link"}
+                          href={"#"}
+                        >
+                          Sign In
+                        </Button>
+                        <Link
+                          href="/register"
+                          _hover={{
+                            textDecoration: "none",
+                          }}
+                        >
+                          <Button
+                            display={{ base: "none", md: "inline-flex" }}
+                            fontSize={"sm"}
+                            fontWeight={600}
+                            color={"white"}
+                            bg={"purple.600"}
+                            _hover={{
+                              bg: "purple.700",
+                            }}
+                          >
+                            Sign Up
+                          </Button>
+                        </Link>
+                      </Stack>
+                    )}
+                  </Flex>
+                )}
 
-            <Stack
-              flex={{ base: 1, md: 0 }}
-              justify={"flex-end"}
-              direction={"row"}
-              spacing={6}
-            >
-              <Button
-                as={"a"}
-                fontSize={"sm"}
-                fontWeight={400}
-                variant={"link"}
-                href={"#"}
-              >
-                Sign In
-              </Button>
-              <Link
-                href="/register"
-                _hover={{
-                  textDecoration: "none",
-                }}
-              >
-                <Button
-                  display={{ base: "none", md: "inline-flex" }}
-                  fontSize={"sm"}
-                  fontWeight={600}
-                  color={"white"}
-                  bg={"purple.600"}
-                  _hover={{
-                    bg: "purple.700",
-                  }}
-                >
-                  Sign Up
-                </Button>
-              </Link>
-            </Stack>
-          </Flex>
-
-          <Collapse in={isOpen} animateOpacity>
-            <MobileNav />
-          </Collapse>
-        </GridItem>
-      </Grid>
-    </Box>
+                <Collapse in={isOpen} animateOpacity>
+                  <MobileNav />
+                </Collapse>
+              </GridItem>
+            </Grid>
+          </Box>
+        )}
+      </UserAuthConsumer>
+    </UserAuthProvider>
   )
 }
 
