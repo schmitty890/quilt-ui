@@ -126,7 +126,7 @@ export default function WithSubnavigation() {
                         spacing={6}
                       >
                         <Link
-                          href="/"
+                          href="/login"
                           _hover={{
                             textDecoration: "none",
                           }}
@@ -134,7 +134,6 @@ export default function WithSubnavigation() {
                           <Button
                             // display={{ base: "none", md: "inline-flex" }}
                             fontWeight={600}
-                            href={"#"}
                             // color={"white"}
                             // bg={"purple.600"}
                             // _hover={{
