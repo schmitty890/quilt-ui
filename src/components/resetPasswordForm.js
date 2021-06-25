@@ -115,21 +115,6 @@ const ResetPasswordForm = () => {
             Reset Password
           </Heading>
           <form onSubmit={handleSubmit}>
-            {/* <FormControl isRequired>
-              <FormLabel mt={4} htmlFor="password">
-                Password
-              </FormLabel>
-              <Input
-                id="password"
-                name="password"
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-              {touched.password && errors.password ? (
-                <Text color="red.500">{errors.password}</Text>
-              ) : null}
-            </FormControl> */}
-
             <FormLabel mt={4} htmlFor="password">
               Password
             </FormLabel>
