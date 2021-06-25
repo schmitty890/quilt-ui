@@ -1,7 +1,7 @@
 import React from "react"
 import NavBar from "../components/navBar"
 import Footer from "../components/footer"
-import ResetPasswordForm from "../components/ResetPasswordForm"
+import ResetPasswordForm from "../components/resetPasswordForm"
 import { Router as MyRouter } from "@reach/router"
 
 import { Box } from "@chakra-ui/react"
