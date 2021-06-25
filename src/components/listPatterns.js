@@ -19,6 +19,7 @@ import {
 
 // import { PatternConsumer } from "../contexts/patternContext"
 import PatternModal from "./patternModal"
+import TotalPatternsText from "./totalPatternsText"
 
 const ListPatterns = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -34,6 +35,7 @@ const ListPatterns = () => {
             </Center>
           ) : (
             <Box>
+              <TotalPatternsText />
               <Grid
                 templateColumns={{
                   base: "repeat(1, 1fr)",
