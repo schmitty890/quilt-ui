@@ -8,13 +8,13 @@ import { Box } from "@chakra-ui/react"
 
 export default function ResetPassword() {
   return (
-    <Box>
-      <NavBar />
-      <MyRouter>
-        <ResetPasswordForm path="/resetPassword/:token" />
-      </MyRouter>
+    // <Box>
+    //   <NavBar />
+    <MyRouter>
+      <ResetPasswordForm path="/resetPassword/:token" />
+    </MyRouter>
 
-      <Footer />
-    </Box>
+    //   <Footer />
+    // </Box>
   )
 }
