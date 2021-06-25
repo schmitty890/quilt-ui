@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { Formik, Field, Form } from "formik"
-import { login } from "../api/login"
+import { submitNewPassword } from "../api/newPassword"
 import { useFormik } from "formik"
 import NavBar from "./navBar"
 import Footer from "./footer"
@@ -18,20 +18,9 @@ import {
   useToast,
   InputRightElement,
   InputGroup,
-  Link,
 } from "@chakra-ui/react"
 
-function validateEmail(value) {
-  let error
-  if (!value) {
-    error = "Required"
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
-    error = "Invalid email address"
-  }
-  return error
-}
-
-const LoginForm = () => {
+const ResetPasswordForm = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [msgSent, setMsgSent] = useState(false)
 
@@ -41,9 +30,6 @@ const LoginForm = () => {
   function validate(values) {
     const errors = {}
 
-    if (!values.email) {
-      errors.email = "Emails are required"
-    }
     if (!values.password) {
       errors.password = "Need a password"
     }
@@ -59,40 +45,49 @@ const LoginForm = () => {
     errors,
   } = useFormik({
     initialValues: {
-      email: "",
       password: "",
+      token: "",
     },
     validate,
     onSubmit: async values => {
+      console.log("WE ARE SUBMITTING RESET PASS")
       setIsLoading(true)
+      var loc = window.location.href
+      loc =
+        loc.lastIndexOf("/") == loc.length - 1
+          ? loc.substr(0, loc.length - 1)
+          : loc.substr(0, loc.length + 1)
+      var targetValue = loc.substr(loc.lastIndexOf("/") + 1)
+      console.log(targetValue)
+      values.token = targetValue
       // make post request here
       console.log(values)
-      const signUserUp = await login(values) // post route
-      console.log(signUserUp)
+
+      const newPasswordForUser = await submitNewPassword(values) // post route
+      console.log(newPasswordForUser)
 
       // TODO: check for other status codes to send different toast messages
-      if (signUserUp.status === 401) {
+      if (newPasswordForUser.status === 422) {
         toast({
           title: "Woah!",
-          description: "Wrong email or password",
+          description: "Go request a new password again",
           status: "error",
           duration: 5000,
           isClosable: true,
         })
-      } else if (signUserUp.status === 200) {
+      } else if (newPasswordForUser.status === 200) {
         toast({
-          title: "Logged in. Redirecting to homepage",
-          description: "Welcome :)",
+          title: "Password reset. YAY!",
+          description: "Welcome back :)",
           status: "success",
           duration: 5000,
           isClosable: true,
         })
-        setTimeout(() => {
-          window.location.href = "/"
-        }, 5000)
+        // setTimeout(() => {
+        //   window.location.href = "/"
+        // }, 5000)
       }
       setIsLoading(false)
-      document.getElementById("email").value = ""
       document.getElementById("password").value = ""
       // setMsgSent(true)
       // setTimeout(() => {
@@ -117,26 +112,9 @@ const LoginForm = () => {
           m={4}
         >
           <Heading as="h2" size="xl">
-            Login
+            Reset Password
           </Heading>
           <form onSubmit={handleSubmit}>
-            <FormControl>
-              <FormLabel mt={4} htmlFor="email">
-                Your email
-              </FormLabel>
-              <Input
-                id="email"
-                type="text"
-                name="email"
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-
-              {touched.email && errors.email ? (
-                <Text color="red.500">{errors.email}</Text>
-              ) : null}
-            </FormControl>
-
             {/* <FormControl isRequired>
               <FormLabel mt={4} htmlFor="password">
                 Password
@@ -180,9 +158,8 @@ const LoginForm = () => {
               isLoading={isLoading}
               type="submit"
             >
-              Login
+              Set new password
             </Button>
-
             {/* {msgSent ? (
               <Alert mt={4} status="success">
                 <AlertIcon />
@@ -190,11 +167,6 @@ const LoginForm = () => {
               </Alert>
             ) : null} */}
           </form>
-          <Link href="/newPasswordRequest">
-            <Button colorScheme="purple" variant="link" mt={5}>
-              Forgot password?
-            </Button>
-          </Link>
         </GridItem>
       </Center>
 
@@ -203,4 +175,4 @@ const LoginForm = () => {
   )
 }
 
-export default LoginForm
+export default ResetPasswordForm

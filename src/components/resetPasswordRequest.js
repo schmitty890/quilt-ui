@@ -4,6 +4,7 @@ import { login } from "../api/login"
 import { useFormik } from "formik"
 import NavBar from "./navBar"
 import Footer from "./footer"
+import { resetPasswordEmailSubmit } from "../api/resetPassword"
 
 import {
   Box,
@@ -18,7 +19,6 @@ import {
   useToast,
   InputRightElement,
   InputGroup,
-  Link,
 } from "@chakra-ui/react"
 
 function validateEmail(value) {
@@ -31,7 +31,7 @@ function validateEmail(value) {
   return error
 }
 
-const LoginForm = () => {
+const ResetPasswordRequestForm = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [msgSent, setMsgSent] = useState(false)
 
@@ -43,9 +43,6 @@ const LoginForm = () => {
 
     if (!values.email) {
       errors.email = "Emails are required"
-    }
-    if (!values.password) {
-      errors.password = "Need a password"
     }
     return errors
   }
@@ -60,40 +57,38 @@ const LoginForm = () => {
   } = useFormik({
     initialValues: {
       email: "",
-      password: "",
     },
     validate,
     onSubmit: async values => {
       setIsLoading(true)
       // make post request here
       console.log(values)
-      const signUserUp = await login(values) // post route
-      console.log(signUserUp)
+      const submitEmailToResetPassword = await resetPasswordEmailSubmit(values) // post route
+      console.log(submitEmailToResetPassword)
 
       // TODO: check for other status codes to send different toast messages
-      if (signUserUp.status === 401) {
+      if (submitEmailToResetPassword.status === 422) {
         toast({
           title: "Woah!",
-          description: "Wrong email or password",
+          description: "User with that email does not exist",
           status: "error",
           duration: 5000,
           isClosable: true,
         })
-      } else if (signUserUp.status === 200) {
+      } else if (submitEmailToResetPassword.status === 200) {
         toast({
-          title: "Logged in. Redirecting to homepage",
-          description: "Welcome :)",
+          title: "Check your email. We sent you a link to reset your password.",
+          description: ":)",
           status: "success",
           duration: 5000,
           isClosable: true,
         })
-        setTimeout(() => {
-          window.location.href = "/"
-        }, 5000)
+        //   setTimeout(() => {
+        //     window.location.href = "/"
+        //   }, 5000)
       }
       setIsLoading(false)
       document.getElementById("email").value = ""
-      document.getElementById("password").value = ""
       // setMsgSent(true)
       // setTimeout(() => {
       //   setMsgSent(false)
@@ -117,7 +112,7 @@ const LoginForm = () => {
           m={4}
         >
           <Heading as="h2" size="xl">
-            Login
+            Request password reset
           </Heading>
           <form onSubmit={handleSubmit}>
             <FormControl>
@@ -137,50 +132,13 @@ const LoginForm = () => {
               ) : null}
             </FormControl>
 
-            {/* <FormControl isRequired>
-              <FormLabel mt={4} htmlFor="password">
-                Password
-              </FormLabel>
-              <Input
-                id="password"
-                name="password"
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-              {touched.password && errors.password ? (
-                <Text color="red.500">{errors.password}</Text>
-              ) : null}
-            </FormControl> */}
-
-            <FormLabel mt={4} htmlFor="password">
-              Password
-            </FormLabel>
-            <InputGroup size="md">
-              <Input
-                id="password"
-                name="password"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                pr="4.5rem"
-                type={show ? "text" : "password"}
-              />
-              <InputRightElement width="4.5rem">
-                <Button h="1.75rem" size="sm" onClick={handleClick}>
-                  {show ? "Hide" : "Show"}
-                </Button>
-              </InputRightElement>
-            </InputGroup>
-            {touched.password && errors.password ? (
-              <Text color="red.500">{errors.password}</Text>
-            ) : null}
-
             <Button
               mt={4}
               colorScheme="purple"
               isLoading={isLoading}
               type="submit"
             >
-              Login
+              Request to reset my password
             </Button>
 
             {/* {msgSent ? (
@@ -190,11 +148,6 @@ const LoginForm = () => {
               </Alert>
             ) : null} */}
           </form>
-          <Link href="/newPasswordRequest">
-            <Button colorScheme="purple" variant="link" mt={5}>
-              Forgot password?
-            </Button>
-          </Link>
         </GridItem>
       </Center>
 
@@ -203,4 +156,4 @@ const LoginForm = () => {
   )
 }
 
-export default LoginForm
+export default ResetPasswordRequestForm
