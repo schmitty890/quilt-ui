@@ -182,8 +182,6 @@ const SignUp = () => {
           </form>
         </GridItem>
       </Center>
-
-      <Footer />
     </Box>
   )
 }

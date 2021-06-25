@@ -169,8 +169,6 @@ const ResetPasswordForm = () => {
           </form>
         </GridItem>
       </Center>
-
-      <Footer />
     </Box>
   )
 }

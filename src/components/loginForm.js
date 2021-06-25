@@ -197,8 +197,6 @@ const LoginForm = () => {
           </Link>
         </GridItem>
       </Center>
-
-      <Footer />
     </Box>
   )
 }
