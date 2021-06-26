@@ -17,6 +17,8 @@ import {
   Alert,
   AlertIcon,
   useToast,
+  Center,
+  Heading,
 } from "@chakra-ui/react"
 
 const ContactForm = () => {
@@ -26,14 +28,14 @@ const ContactForm = () => {
   function validate(values) {
     const errors = {}
     if (!values.yourName) {
-      errors.yourName = "Required"
+      errors.yourName = "Your name is required"
     }
 
     if (!values.yourEmail) {
-      errors.yourEmail = "Required"
+      errors.yourEmail = "Your email is required"
     }
     if (!values.yourMessage) {
-      errors.yourMessage = "Say something"
+      errors.yourMessage = "Please, say something in your message! :)"
     }
     return errors
   }
@@ -81,74 +83,89 @@ const ContactForm = () => {
     <Box>
       <NavBar />
 
-      <GridItem rowSpan={1} colSpan={{ base: 12 }} bg={{ base: "white" }} p={4}>
-        <form onSubmit={handleSubmit}>
-          <FormControl isRequired>
-            <FormLabel mt={4} htmlFor="yourName">
-              Your name
-            </FormLabel>
-            <Input
-              id="yourName"
-              type="text"
-              name="yourName"
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            {touched.yourName && errors.yourName ? (
-              <Text color="red.500">{errors.yourName}</Text>
-            ) : null}
-          </FormControl>
+      <Center>
+        <GridItem
+          rowSpan={1}
+          colSpan={{ base: 12 }}
+          bg={{ base: "white" }}
+          p={4}
+          minWidth={{ base: 100, md: 500 }}
+          border="1px"
+          borderColor="gray.200"
+          borderRadius={5}
+          m={4}
+        >
+          <Heading as="h2" size="xl">
+            Contact
+          </Heading>
+          <form onSubmit={handleSubmit}>
+            <FormControl isRequired>
+              <FormLabel mt={4} htmlFor="yourName">
+                Your name
+              </FormLabel>
+              <Input
+                id="yourName"
+                type="text"
+                name="yourName"
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              {touched.yourName && errors.yourName ? (
+                <Text color="red.500">{errors.yourName}</Text>
+              ) : null}
+            </FormControl>
 
-          <FormControl isRequired>
-            <FormLabel mt={4} htmlFor="yourEmail">
-              Your email:
-            </FormLabel>
-            <Input
-              id="yourEmail"
-              type="text"
-              name="yourEmail"
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
+            <FormControl isRequired>
+              <FormLabel mt={4} htmlFor="yourEmail">
+                Your email:
+              </FormLabel>
+              <Input
+                id="yourEmail"
+                type="text"
+                name="yourEmail"
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
 
-            {touched.yourEmail && errors.yourEmail ? (
-              <Text color="red.500">{errors.yourEmail}</Text>
-            ) : null}
-          </FormControl>
+              {touched.yourEmail && errors.yourEmail ? (
+                <Text color="red.500">{errors.yourEmail}</Text>
+              ) : null}
+            </FormControl>
 
-          <FormControl isRequired>
-            <FormLabel mt={4} htmlFor="yourMessage">
-              Your message
-            </FormLabel>
-            <Textarea
-              id="yourMessage"
-              name="yourMessage"
-              onChange={handleChange}
-              onBlur={handleBlur}
+            <FormControl isRequired>
+              <FormLabel mt={4} htmlFor="yourMessage">
+                Your message
+              </FormLabel>
+              <Textarea
+                id="yourMessage"
+                name="yourMessage"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                mt={4}
+                placeholder="Contact me with any questions or opportunities, or just say whats up!"
+              />
+              {touched.yourMessage && errors.yourMessage ? (
+                <Text color="red.500">{errors.yourMessage}</Text>
+              ) : null}
+            </FormControl>
+
+            <Button
               mt={4}
-              placeholder="Contact me with any questions or opportunities, or just say whats up!"
-            />
-            {touched.yourMessage && errors.yourMessage ? (
-              <Text color="red.500">{errors.yourMessage}</Text>
-            ) : null}
-          </FormControl>
-
-          <Button
-            mt={4}
-            colorScheme="purple"
-            isLoading={isLoading}
-            type="submit"
-          >
-            Send!
-          </Button>
-          {/* {msgSent ? (
+              colorScheme="purple"
+              isLoading={isLoading}
+              type="submit"
+            >
+              Send!
+            </Button>
+            {/* {msgSent ? (
             <Alert mt={4} status="success">
               <AlertIcon />
               Your message has been sent :)
             </Alert>
           ) : null} */}
-        </form>
-      </GridItem>
+          </form>
+        </GridItem>
+      </Center>
 
       <Footer />
     </Box>

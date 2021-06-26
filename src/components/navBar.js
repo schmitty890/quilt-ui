@@ -337,7 +337,7 @@ const NAV_ITEMS = [
       {
         label: "About Sara",
         subLabel: "Who is she?",
-        href: "#",
+        href: "/about",
       },
       {
         label: "New & Noteworthy",

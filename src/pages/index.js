@@ -13,7 +13,7 @@ export default function Home() {
     <PatternProvider>
       <Box>
         <NavBar />
-        <Grid templateColumns="repeat(12, 1fr)" gap={4} mt={4}>
+        <Grid templateColumns="repeat(12, 1fr)" gap={4} p={4}>
           <GridItem colSpan={{ base: 12, md: 6 }} bg="gray.50">
             <Grid templateColumns="repeat(12, 1fr)" gap={4}>
               <GridItem colSpan={{ base: 12, md: 6 }}>
