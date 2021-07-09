@@ -107,6 +107,31 @@ export const getPatternById = async id => {
   }
 }
 
+export const updatePatternById = async values => {
+  console.log("updatePatternById")
+  console.log(values)
+
+  try {
+    let baseURL =
+      window.location.hostname === "localhost"
+        ? "http://localhost:8081"
+        : "https://quilt-api-hdi7d.ondigitalocean.app"
+
+    // post data to a url endpoint
+    const response = await axios.put(`${baseURL}/pattern/${values.id}`, values)
+    console.log(response)
+    // response.data.forEach(pattern => {
+    //   // console.log(pattern)
+    //   assignColors(pattern)
+    // })
+    response.data = assignColors(response.data)
+
+    return response.data
+  } catch (error) {
+    console.log(error) // catches both errors
+  }
+}
+
 /**
  *
  * @param {*} pattern

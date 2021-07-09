@@ -8,6 +8,7 @@ class UserAuthProvider extends Component {
     test: "ourTextExample",
     userId: false,
     loading: true,
+    admin: false,
   }
 
   componentDidMount() {
@@ -20,6 +21,7 @@ class UserAuthProvider extends Component {
     if (window.localStorage.getItem("_id")) {
       this.setState({
         userId: window.localStorage.getItem("_id"),
+        admin: window.localStorage.getItem("admin"),
         loading: false,
       })
     } else {
@@ -49,6 +51,7 @@ class UserAuthProvider extends Component {
         value={{
           test: this.state.test,
           userId: this.state.userId,
+          admin: this.state.admin,
           logout: this.logout,
           loading: this.state.loading,
         }}

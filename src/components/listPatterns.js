@@ -19,7 +19,9 @@ import {
 
 // import { PatternConsumer } from "../contexts/patternContext"
 import PatternModal from "./patternModal"
+import EditPatternFormModal from "./editPatternFormModal"
 import TotalPatternsText from "./totalPatternsText"
+import { UserAuthProvider, UserAuthConsumer } from "../contexts/userAuthContext"
 
 const ListPatterns = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -90,6 +92,24 @@ const ListPatterns = () => {
                         patternImage={pattern.imageURL}
                         patternImageAlt={pattern.name}
                       />
+                      <UserAuthProvider>
+                        <UserAuthConsumer>
+                          {({ admin }) => (
+                            <Box>
+                              {admin ? (
+                                <EditPatternFormModal
+                                  showModalButtonText="Edit pattern"
+                                  modalHeader={pattern.name}
+                                  patternId={pattern._id}
+                                  patternImage={pattern.imageURL}
+                                  patternImageAlt={pattern.name}
+                                  patternCategory={pattern.category}
+                                />
+                              ) : null}
+                            </Box>
+                          )}
+                        </UserAuthConsumer>
+                      </UserAuthProvider>
                       <FavoritePatternProvider>
                         <FavoritePatternConsumer>
                           {({ addToFavoritePatterns }) => (

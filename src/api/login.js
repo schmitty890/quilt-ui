@@ -16,6 +16,9 @@ export const login = async data => {
         console.log(res)
         localStorage.setItem("token", res.data.token)
         localStorage.setItem("_id", res.data._id)
+        if (res.data.admin) {
+          localStorage.setItem("admin", res.data.admin)
+        }
         return res
       })
       .catch(error => {
